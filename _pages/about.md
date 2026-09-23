@@ -25,6 +25,7 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
+
 Hi! I am a currently research fellow at the National University of Singapore. I earned my Ph.D. in Mechanical Engineering at NUS under the President's Graduate Fellowship. I completed my Bachelor's Degree in Aerospace Engineering from the Nanyang Technological University, Singapore under the C.N. Yang Scholars Program with ASEAN Scholarship. 
 
 My research focuses on using simulations and experiments to develop sustainable metal manufacturing strategies. During my Ph.D., I used simulations to reveal the mechanisms behind gas-liquid metal interactions in metal additive manufacturing processes to better inform on metal powder reuse and performed experiments to explore possible strategies to exploit the inevitable reaction between metal liquid and oxygen.
