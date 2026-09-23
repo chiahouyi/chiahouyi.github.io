@@ -1,4 +1,1 @@
 nbconvert
-scholarly
-pyyaml
-bibtexparser<2
