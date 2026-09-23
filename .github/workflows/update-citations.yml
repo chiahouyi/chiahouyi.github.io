@@ -32,6 +32,19 @@ jobs:
           pip show bibtexparser
           pip show requests
 
+      - name: Test Google Scholar access
+        run: |
+          python - <<'PY'
+          import requests
+          url = "https://scholar.google.com/citations?user=UO9r2PsAAAAJ"
+          r = requests.get(url, timeout=15)
+          print("HTTP status:", r.status_code)
+          print("Final URL:", r.url)
+          print("Response length:", len(r.text))
+          print("Contains CAPTCHA:", "captcha" in r.text.lower())
+          print("Contains profile:", "Hou Yi Chia" in r.text)
+          PY
+
       - name: Run citation update
         run: |
           python bin/update_scholar_citations.py
