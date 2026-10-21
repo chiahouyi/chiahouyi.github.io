@@ -80,13 +80,20 @@
   <!-- Schema.org -->
   {% comment %} Social links generator for "sameAs schema" {% endcomment %}
   {% assign sameaslinks = '' | split: ',' %}
-  {% if site.orcid_id %}
-    {% capture link %}https://orcid.org/{{ site.orcid_id }}{% endcapture %}
+  {% if site.data.socials.orcid_id %}
+    {% capture link %}https://orcid.org/{{ site.data.socials.orcid_id }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
   {% endif %}
-  {% if site.scholar_userid %}
-    {% capture link %}https://scholar.google.com/citations?user={{ site.scholar_userid }}{% endcapture %}
+  {% if site.data.socials.scholar_userid %}
+    {% capture link %}https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
+  {% endif %}
+  {% if site.data.socials.research_gate_profile %}
+    {% capture link %}https://www.researchgate.net/profile/{{ site.data.socials.research_gate_profile }}{% endcapture %}
+    {% assign sameaslinks = sameaslinks | push: link %}
+  {% endif %}
+  {% if site.data.socials.nus_profile_url %}
+    {% assign sameaslinks = sameaslinks | push: site.data.socials.nus_profile_url %}
   {% endif %}
   {% if site.semanticscholar_id %}
     {% capture link %}https://www.semanticscholar.org/author/{{ site.semanticscholar_id }}{% endcapture %}
@@ -102,10 +109,6 @@
   {% endif %}
   {% if site.osf_id %}
     {% capture link %}https://osf.io/{{ site.osf_id }}/{% endcapture %}
-    {% assign sameaslinks = sameaslinks | push: link %}
-  {% endif %}
-  {% if site.research_gate_profile %}
-    {% capture link %}https://www.researchgate.net/profile/{{ site.research_gate_profile }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
   {% endif %}
   {% if site.scopus_id %}
@@ -216,26 +219,40 @@
     {% capture link %}https://www.zotero.org/{{ site.zotero_username }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
   {% endif %}
-  {% if sameaslinks != blank %}
-    {% assign sameaslinks = sameaslinks | split: '' %}
-  {% endif %}
-
   <script type="application/ld+json">
     {
-        "author":
-        {
-            "@type": "Person",
-            "name": "{{ author_name }}"
+      "author": {
+        "@type": "Person",
+        "@id": {{ "https://chiahouyi.github.io/#person" | jsonify }},
+        "name": {{ author_name | strip | jsonify }},
+        "url": {{ "https://chiahouyi.github.io/" | jsonify }},
+        "jobTitle": {{ "Research Fellow" | jsonify }},
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": {{ "National University of Singapore" | jsonify }},
+          "url": {{ "https://www.nus.edu.sg/" | jsonify }}
         },
-        "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
-        "@type": "{% if is_blog_post %}BlogPosting{% else %}WebSite{% endif %}",
-        "description": "{% if page.description %}{{ page.description }}{% else if site.description %}{{ site.description }}{% endif %}",
-        "headline": "{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}",
-        {% if sameaslinks != blank %}
-        "sameAs": {{ sameaslinks }},
-        {% endif %}
-        "name": "{{ author_name }}",
-        "@context": "https://schema.org"
+        "knowsAbout": [
+          {{ "Metal Additive Manufacturing" | jsonify }},
+          {{ "Laser Powder Bed Fusion" | jsonify }},
+          {{ "Multiphysics Modeling" | jsonify }},
+          {{ "Gas–Metal Interactions" | jsonify }},
+          {{ "Powder Reuse" | jsonify }},
+          {{ "Sustainable Manufacturing" | jsonify }}
+        ]{% if sameaslinks != blank %},
+        "sameAs": {{ sameaslinks | uniq | jsonify }}{% endif %}
+      },
+      {% if is_blog_post %}
+        "url": {{ page.url | prepend: site.baseurl | prepend: site.url | jsonify }},
+      {% else %}
+        "@id": {{ "https://chiahouyi.github.io/#website" | jsonify }},
+        "url": {{ "https://chiahouyi.github.io/" | jsonify }},
+      {% endif %}
+      "@type": {% if is_blog_post %}{{ "BlogPosting" | jsonify }}{% else %}{{ "WebSite" | jsonify }}{% endif %},
+      "description": {% if page.description %}{{ page.description | jsonify }}{% elsif site.description %}{{ site.description | jsonify }}{% else %}{{ "" | jsonify }}{% endif %},
+      "headline": {% if page.title %}{{ page.title | jsonify }}{% else %}{{ site.title | jsonify }}{% endif %},
+      "name": {{ author_name | strip | jsonify }},
+      "@context": "https://schema.org"
     }
   </script>
 {% endif %}

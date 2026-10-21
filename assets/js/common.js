@@ -26,8 +26,11 @@ $(document).ready(function () {
     var navSelector = "#toc-sidebar";
     var $myNav = $(navSelector);
     Toc.init($myNav);
+    var scrollOffset =
+      parseFloat(window.getComputedStyle(document.documentElement).getPropertyValue("--toc-scroll-offset")) || 10;
     $("body").scrollspy({
       target: navSelector,
+      offset: scrollOffset,
     });
   }
 

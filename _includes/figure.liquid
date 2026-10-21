@@ -62,8 +62,8 @@
           {% endif %}
         "
       {% endif %}
-      {% if include.alt %}
-        alt="{{ include.alt }}"
+      {% if include.alt != nil or include.decorative %}
+        alt="{{ include.alt | escape }}"
       {% endif %}
       {% if include.title %}
         title="{{ include.title }}"
