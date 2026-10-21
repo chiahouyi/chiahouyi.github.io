@@ -242,7 +242,12 @@
         ]{% if sameaslinks != blank %},
         "sameAs": {{ sameaslinks | uniq | jsonify }}{% endif %}
       },
-      "url": {{ page.url | prepend: site.baseurl | prepend: site.url | jsonify }},
+      {% if is_blog_post %}
+        "url": {{ page.url | prepend: site.baseurl | prepend: site.url | jsonify }},
+      {% else %}
+        "@id": {{ "https://chiahouyi.github.io/#website" | jsonify }},
+        "url": {{ "https://chiahouyi.github.io/" | jsonify }},
+      {% endif %}
       "@type": {% if is_blog_post %}{{ "BlogPosting" | jsonify }}{% else %}{{ "WebSite" | jsonify }}{% endif %},
       "description": {% if page.description %}{{ page.description | jsonify }}{% elsif site.description %}{{ site.description | jsonify }}{% else %}{{ "" | jsonify }}{% endif %},
       "headline": {% if page.title %}{{ page.title | jsonify }}{% else %}{{ site.title | jsonify }}{% endif %},

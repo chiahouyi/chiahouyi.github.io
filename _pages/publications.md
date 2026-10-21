@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: /publications/
-title: publications
-description: publications by categories in reversed chronological order. * denotes equal contribution.
+title: Publications
+description: Research publications by Hou Yi Chia in metal additive manufacturing and related fields.
 nav: true
 nav_order: 2
 ---
@@ -14,6 +14,10 @@ nav_order: 2
 {% include bib_search.liquid %}
 
 <div class="publications">
+
+<p class="publication-note">
+  Note: ( <sup>*</sup> ) These authors contributed equally to this work.
+</p>
 
 {% bibliography %}
 
