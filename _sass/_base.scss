@@ -1163,6 +1163,7 @@ nav[data-toggle="toc"] {
   .nav > li > a {
     color: var(--global-text-color);
     font-size: 0.75rem;
+    overflow-wrap: anywhere;
 
     &:hover {
       color: var(--global-hover-color);
@@ -1179,6 +1180,18 @@ nav[data-toggle="toc"] {
       color: var(--global-hover-color);
       border-left-color: var(--global-hover-color);
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .toc-sidebar-column {
+    flex: 0 0 28%;
+    max-width: 28%;
+  }
+
+  .toc-content-column {
+    flex: 0 0 72%;
+    max-width: 72%;
   }
 }
 

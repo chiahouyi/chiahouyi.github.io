@@ -92,6 +92,9 @@
     {% capture link %}https://www.researchgate.net/profile/{{ site.data.socials.research_gate_profile }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
   {% endif %}
+  {% if site.data.socials.nus_profile_url %}
+    {% assign sameaslinks = sameaslinks | push: site.data.socials.nus_profile_url %}
+  {% endif %}
   {% if site.semanticscholar_id %}
     {% capture link %}https://www.semanticscholar.org/author/{{ site.semanticscholar_id }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
@@ -237,7 +240,7 @@
           {{ "Powder Reuse" | jsonify }},
           {{ "Sustainable Manufacturing" | jsonify }}
         ]{% if sameaslinks != blank %},
-        "sameAs": {{ sameaslinks | jsonify }}{% endif %}
+        "sameAs": {{ sameaslinks | uniq | jsonify }}{% endif %}
       },
       "url": {{ page.url | prepend: site.baseurl | prepend: site.url | jsonify }},
       "@type": {% if is_blog_post %}{{ "BlogPosting" | jsonify }}{% else %}{{ "WebSite" | jsonify }}{% endif %},

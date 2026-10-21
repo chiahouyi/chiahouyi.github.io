@@ -1,97 +1,143 @@
-- title: General Information
-  type: map
+# Academic Experience page for al-folio.
+# Replace the demonstration content in _data/cv.yml with this file.
+
+- title: Professional Appointments
+  type: time_table
   contents:
-    - name: Full Name
-      value: Chia Hou Yi
-    #- name: Date of Birth
-    #  value: 14th March 1879
-    - name: Languages
-      value: English, Chinese, German
+    - title: Research Fellow (Mechanical Engineering)
+      institution: National University of Singapore (NUS), Department of Mechanical Engineering, Singapore
+      year: 2024–Present
+      description: 
+       - <a href="https://discovery.nus.edu.sg/27910-hou-yi-chia/publications">Official NUS Profile</a>
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: National University of Singapore, Singapore
-      year: 2024
+    - title: Doctor of Philosophy (Ph.D.), Mechanical Engineering
+      institution: National University of Singapore (NUS), Department of Mechanical Engineering, Singapore
+      year: 2020–2025
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - '<strong>Thesis:</strong> <a href="https://scholarbank.nus.edu.sg/entities/publication/ecaea388-f802-4dc8-8601-7b63817ce202">Multi-physics simulation and experiments on oxygen and oxides in additive manufacturing</a>'
+        - 'Supervisor: <a href="https://cde.nus.edu.sg/me/staff/yan-wentao/">Assoc. Prof. Wentao Yan</a>'
+        - 'Co-supervisor: <a href="https://cde.nus.edu.sg/me/staff/lee-heow-pueh/">Prof. Heow Pueh Lee</a>'
+        - "President’s Graduate Fellowship (awarded by nomination)."
+        - 'CAP: 4.90/5.00'
+    - title: Bachelor of Engineering (Honours), Aerospace Engineering
+      institution: Nanyang Technological University (NTU), School of Mechanical and Aerospace Engineering, Singapore
+      year: 2016–2020
       description:
-        - Description 1.
-        - Description 2.
+        - 'Honours (Highest Distinction); CGPA: 4.89/5.00.'
+        - 'C. N. Yang Scholars Programme with ASEAN Undergraduate Scholarship'
 
-- title: Experience
+- title: Selected Honours and Awards
   type: time_table
   contents:
-    - title: Research Fellow
-      institution: National University of Singapore, Singapore
-      year: 2024 - Present
+    - title: PhD Research Excellence Award
+      institution: National University of Singapore
+      year: '2024'
+    - title: NUSGS Research Incentive Award
+      institution: National University of Singapore
+      year: 2022–2024
+    - title: Best Paper Award
+      institution: Journal of Material Informatics
+      year: '2023'
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - <a href="https://www.oaepublish.com/news/jmi.740">Awarded for the most cited, downloaded, and viewed article in the journal.</a>
+    - title: Dean’s List (AY 2018/19)
+      institution: Nanyang Technological University
+      year: '2018'
       description:
-        - Description 1.
-        - Description 2.
+        - <a href="https://www.ntu.edu.sg/media/docs/librariesprovider122/ug/dean's-list/dean's-list-names-webpage-ay2018-2019.pdf?sfvrsn=e00c71b0_4">Awarded to the top 5% of the Aerospace Engineering cohort.</a>
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
+- title: Scholarships & Fellowships
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: President’s Graduate Fellowship (funded by Lee Kong Chian Scholarship)
+      institution: National University of Singapore
+      year: 2020–2024
+      description:
+        - '<a href="https://nusgs.nus.edu.sg/scholarships/presidents-graduate-fellowship">Official fellowship information</a>'
+    - title: C. N. Yang Scholars Programme
+      institution: Nanyang Technological University
+      year: 2016–2020
+      description:
+        - '<a href="https://www.ntu.edu.sg/honours-college/signature-programmes/cn-yang-scholars-programme">Official programme information</a>'
+    - title: ASEAN Undergraduate Scholarship
+      institution: Nanyang Technological University
+      year: 2016–2020
+      description: 
+       - '<a href="https://www.ntu.edu.sg/admissions/undergraduate/scholarships-and-awards/scholarship-opportunities/detail/asean-undergraduate-scholarship">Official scholarship information</a>'
+    - title: ASEAN Scholarship (APMOPS)
+      institution: Hwa Chong Institution (Integrated Programme), Singapore
+      year: 2010–2015
 
-- title: Honors and Awards
+
+- title: Invited Research Presentations
   type: time_table
   contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
+    - title: Research Presentation
+      institution: Singapore Institute of Technology, Singapore
+      year: '2025'
+      description:
+        - 4 November 2025
 
-- title: Academic Interests
-  type: nested_list
+    - title: Research Presentation
+      institution: Fraunhofer ILT, Aachen, Germany
+      year: '2023'
+      description:
+        - 2 August 2023
+
+    - title: Research Presentation
+      institution: Fraunhofer IAPT, Hamburg, Germany
+      year: '2023'
+      description:
+        - 31 July 2023
+
+- title: Selected Conference Presentations
+  type: time_table
   contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+    - title: "Unveiling gas-liquid metal reactions in additive manufacturing: High fidelity modeling validated with experiments"
+      institution: "35th International Annual Solid Freeform Fabrication Symposium (SFF), Austin, Texas, USA"
+      year: '2024'
 
-- title: Other Interests
+    - title: "Modeling of gas-liquid metal reactions in additive manufacturing"
+      institution: "International Conference on Computational Engineering and Sciences (ICCES), Singapore"
+      year: '2024'
+
+    - title: "Modeling of mass transfer of oxygen and its influence on molten pool dynamics during additive manufacturing"
+      institution: "4th International Conference on Simulation for Additive Manufacturing (SIM-AM), Munich, Germany"
+      year: '2023'
+
+    - title: "Modeling of mass transfer of oxygen and its influence on molten pool dynamics during additive manufacturing"
+      institution: "International Conference on Materials for Advanced Technologies (ICMAT), Singapore"
+      year: '2023'
+
+    - title: "Influence of oxygen content on melt pool dynamics in powder bed fusion"
+      institution: "32nd Annual International Solid Freeform Fabrication Symposium (SFF), Virtual"
+      year: '2021'
+
+    - title: "Influence of oxygen content on melt pool dynamics in powder bed fusion"
+      institution: "International Conference on Materials for Humanity (MH21), Virtual"
+      year: '2021'
+
+
+- title: Academic Services
+  type: time_table
+  contents: 
+    - title: Journal Peer Reviewer
+      institution: Academic Journals
+      year: '2022-Present'
+      description: 
+       - 'Additive Manufacturing'
+       - 'Advanced Engineering Materials'
+       - 'Journal of Alloy and Compounds'
+       - 'Journal of Optics and Laser Technologies'
+       - 'International Journal of Intelligent Systems'
+
+- title: Languages
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - English
+    - Chinese
+    - Malay
+    - German

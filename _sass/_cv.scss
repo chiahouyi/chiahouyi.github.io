@@ -154,10 +154,24 @@ td.list-group-link {
  * CV TOC styles
  *****************************/
 
-a.anchor {
+html.experience-page {
+  --toc-scroll-offset: 72px;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.experience-page {
+    scroll-behavior: auto;
+  }
+}
+
+.experience-page .cv .card-title,
+.experience-page .cv a.anchor {
+  scroll-margin-top: var(--toc-scroll-offset);
+}
+
+.cv a.anchor {
   display: block;
-  position: relative;
-  top: -50px;
   visibility: hidden;
 }
 
