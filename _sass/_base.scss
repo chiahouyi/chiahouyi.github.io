@@ -5,7 +5,6 @@
 // Typography
 
 p,
-h1,
 h2,
 h3,
 h4,
@@ -17,6 +16,10 @@ li,
 span,
 strong {
   color: var(--global-text-color);
+}
+
+h1 {
+  color: var(--global-theme-color);
 }
 
 hr {
@@ -47,6 +50,29 @@ table.table a {
   &:hover:after :not(.nav-item.dropdown) {
     width: 100%;
   }
+}
+
+.post article p a:not(.btn):not(.anchor),
+.post article ul a:not(.btn):not(.anchor),
+.post article td a:not(.btn):not(.anchor) {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.15em;
+}
+
+.post .selected-publications-heading {
+  color: var(--global-theme-color);
+  margin-top: 2.5rem;
+}
+
+.post-header .site-name-title span {
+  color: var(--global-theme-color);
+}
+
+.publications .abbr a,
+.publications .title a,
+.publications .author a {
+  text-decoration: none;
 }
 
 .table-dark {
@@ -285,10 +311,19 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-brand {
     color: var(--global-text-color);
+
+    &.title {
+      color: var(--global-theme-color);
+
+      span {
+        color: var(--global-theme-color);
+      }
+    }
   }
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    text-transform: uppercase;
 
     &:hover {
       color: var(--global-hover-color);
@@ -299,6 +334,10 @@ ul.task-list input[type="checkbox"] {
     background-color: inherit;
     font-weight: bolder;
     color: var(--global-theme-color);
+    text-decoration: underline;
+    text-decoration-color: $orange-color;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
 
     &:hover {
       color: var(--global-hover-color);
@@ -340,6 +379,44 @@ ul.task-list input[type="checkbox"] {
         }
       }
     }
+  }
+}
+
+html:not([data-theme="dark"]) .post-header .site-name-title::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  margin-top: 0.5rem;
+  border-bottom: 3px solid $orange-color;
+}
+
+html[data-theme="dark"] {
+  h1 {
+    color: var(--global-text-color);
+  }
+
+  .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+    text-decoration-color: $orange-color-dark;
+  }
+
+  .post-header .site-name-title::after {
+    display: none;
+  }
+
+  .publications h2.bibliography {
+    color: var(--global-divider-color);
+    border-top-color: var(--global-divider-color);
+
+    span {
+      color: var(--global-divider-color);
+    }
+  }
+
+  .navbar.navbar-light .navbar-brand.title,
+  .navbar.navbar-light .navbar-brand.title span,
+  .post-header .site-name-title span,
+  .post .selected-publications-heading {
+    color: var(--global-text-color);
   }
 }
 
@@ -485,10 +562,11 @@ footer.fixed-bottom {
 
   a {
     color: var(--global-footer-link-color);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 
     &:hover {
-      color: var(--global-theme-color);
-      text-decoration: none;
+      color: var(--global-footer-link-color);
     }
   }
 }
@@ -714,11 +792,15 @@ footer.sticky-bottom {
   }
 
   h2.bibliography {
-    color: var(--global-divider-color);
-    border-top: 1px solid var(--global-divider-color);
+    color: var(--global-theme-color);
+    border-top: 1px solid rgba($orange-color, 0.55);
     padding-top: 1rem;
     margin-top: 2rem;
     text-align: right;
+
+    span {
+      color: var(--global-theme-color);
+    }
   }
 
   ol.bibliography {
@@ -757,7 +839,17 @@ footer.sticky-bottom {
       }
 
       .title {
-        font-weight: bolder;
+        color: var(--global-text-color);
+        font-weight: 600;
+
+        a {
+          color: var(--global-text-color);
+
+          &:hover {
+            color: var(--global-theme-color);
+            text-decoration: underline;
+          }
+        }
       }
 
       .author {
@@ -1340,8 +1432,8 @@ ninja-keys::part(ninja-input-wrapper) {
 
 // highlight-search-term
 ::highlight(search) {
-  background-color: var(--global-theme-color);
-  color: var(--global-text-color);
+  background-color: var(--global-search-highlight-bg);
+  color: var(--global-search-highlight-text);
 }
 
 figure.cover {
