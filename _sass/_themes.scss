@@ -11,8 +11,11 @@
   --global-text-color: #{$grey-color-dark};
   --global-text-color-light: #{$grey-color};
   --global-theme-color: #{$blue-color};
+  --global-heading-color: var(--global-theme-color);
   --global-hover-color: #{$blue-color};
   --global-hover-text-color: #{$white-color};
+  --global-surface-color: var(--global-bg-color);
+  --global-accent-color: #{$orange-color};
   --global-footer-bg-color: #{$blue-color};
   --global-footer-text-color: #{$white-color};
   --global-footer-link-color: #{$white-color};
@@ -80,21 +83,24 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --global-bg-color: #{$grey-color-dark};
-  --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
+  --global-bg-color: #101827;
+  --global-code-bg-color: #1b283b;
+  --global-text-color: #e5eaf1;
+  --global-text-color-light: #aab6c6;
+  --global-theme-color: #88bbf5;
+  --global-heading-color: #a9ceff;
+  --global-hover-color: #a9ceff;
   --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
-  --global-search-highlight-bg: #{$cyan-color};
-  --global-search-highlight-text: #{$grey-color-light};
-  --global-card-bg-color: #{$grey-900};
+  --global-surface-color: #1b283b;
+  --global-accent-color: #ff9b45;
+  --global-footer-bg-color: #1b283b;
+  --global-footer-text-color: #e5eaf1;
+  --global-footer-link-color: #88bbf5;
+  --global-distill-app-color: #aab6c6;
+  --global-divider-color: #34445a;
+  --global-search-highlight-bg: #49301f;
+  --global-search-highlight-text: #ffd1a3;
+  --global-card-bg-color: #1b283b;
   --global-back-to-top-bg-color: rgba(
     #{color.channel($white-color, "red", $space: rgb)},
     #{color.channel($white-color, "green", $space: rgb)},
@@ -102,8 +108,8 @@ html[data-theme="dark"] {
     0.5
   );
   --global-back-to-top-text-color: #{$black-color};
-  --global-newsletter-bg-color: #{$grey-color-light};
-  --global-newsletter-text-color: #{$grey-color-dark};
+  --global-newsletter-bg-color: #1b283b;
+  --global-newsletter-text-color: #e5eaf1;
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;

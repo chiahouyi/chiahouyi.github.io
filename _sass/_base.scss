@@ -19,7 +19,7 @@ strong {
 }
 
 h1 {
-  color: var(--global-theme-color);
+  color: var(--global-heading-color);
 }
 
 hr {
@@ -272,12 +272,12 @@ ul.task-list input[type="checkbox"] {
 .navbar {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
+  background-color: var(--global-surface-color);
   opacity: 0.95;
 }
 
 .navbar .dropdown-menu {
-  background-color: var(--global-bg-color);
+  background-color: var(--global-surface-color);
   border: 1px solid var(--global-divider-color);
 
   a:not(.active) {
@@ -391,24 +391,34 @@ html:not([data-theme="dark"]) .post-header .site-name-title::after {
 }
 
 html[data-theme="dark"] {
-  h1 {
-    color: var(--global-text-color);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--global-heading-color);
+  }
+
+  .publications h1 {
+    color: var(--global-heading-color);
   }
 
   .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
-    text-decoration-color: $orange-color-dark;
+    text-decoration-color: var(--global-accent-color);
   }
 
   .post-header .site-name-title::after {
-    display: none;
+    display: block;
+    border-bottom-color: var(--global-accent-color);
   }
 
   .publications h2.bibliography {
-    color: var(--global-divider-color);
+    color: var(--global-heading-color);
     border-top-color: var(--global-divider-color);
 
     span {
-      color: var(--global-divider-color);
+      color: var(--global-heading-color);
     }
   }
 
@@ -416,7 +426,7 @@ html[data-theme="dark"] {
   .navbar.navbar-light .navbar-brand.title span,
   .post-header .site-name-title span,
   .post .selected-publications-heading {
-    color: var(--global-text-color);
+    color: var(--global-heading-color);
   }
 }
 
@@ -844,10 +854,20 @@ footer.sticky-bottom {
 
         a {
           color: var(--global-text-color);
+          text-decoration: none;
 
           &:hover {
             color: var(--global-theme-color);
             text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.15em;
+          }
+
+          &:focus-visible {
+            color: var(--global-theme-color);
+            outline: 2px solid var(--global-theme-color);
+            outline-offset: 2px;
+            border-radius: 2px;
           }
         }
       }

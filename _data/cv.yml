@@ -28,6 +28,12 @@
       description:
         - 'Honours (Highest Distinction); CGPA: 4.89/5.00.'
         - 'C. N. Yang Scholars Programme with ASEAN Undergraduate Scholarship'
+    - title: Overseas Final Year Project (OFYP)
+      institution: University of Glasgow, Scotland, United Kingdom
+      year: '2019'
+      description:
+        - 'Research project: <a href="https://dr.ntu.edu.sg/entities/publication/49465046-a0c4-48e1-b1ac-7070ae660802">Processing parameters and their effects on surface characteristics and material properties of selective laser-melted stainless steel</a>.'
+        - 'Host institution for undergraduate research project; degree awarded by Nanyang Technological University.'    
 
 - title: Selected Honours and Awards
   type: time_table
