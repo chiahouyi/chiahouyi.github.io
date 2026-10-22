@@ -9,19 +9,19 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-publications",
-          title: "Publications",
-          description: "Research publications by Hou Yi Chia in metal additive manufacturing and related fields.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/publications/";
-          },
-        },{id: "nav-experience",
+  },{id: "nav-experience",
           title: "Experience",
           description: "Academic appointments, education, research experience, honours, awards, and academic service of Hou Yi Chia.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
+          },
+        },{id: "nav-publications",
+          title: "Publications",
+          description: "Research publications by Hou Yi Chia in metal additive manufacturing and related fields.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
           },
         },{id: "books-the-godfather",
           title: 'The Godfather',
