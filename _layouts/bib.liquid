@@ -48,16 +48,40 @@
   <!-- Entry bib key -->
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    {% assign publication_link = '' %}
+    {% if entry.doi %}
+      {% assign normalized_doi = entry.doi | strip %}
+      {% assign normalized_doi = normalized_doi | remove_first: 'https://doi.org/' %}
+      {% assign normalized_doi = normalized_doi | remove_first: 'http://doi.org/' %}
+      {% assign normalized_doi = normalized_doi | remove_first: 'https://dx.doi.org/' %}
+      {% assign normalized_doi = normalized_doi | remove_first: 'http://dx.doi.org/' %}
+      {% assign doi_validation = normalized_doi | regex_replace: '^10\.[0-9]{4,9}/\S+$', 'valid-doi' %}
+      {% if doi_validation == 'valid-doi' %}
+        {% capture publication_link %}https://doi.org/{{ normalized_doi }}{% endcapture %}
+      {% endif %}
+    {% endif %}
+    {% if publication_link == blank and entry.url %}
+      {% assign candidate_url = entry.url | strip %}
+      {% assign url_http_prefix = candidate_url | slice: 0, 7 %}
+      {% assign url_https_prefix = candidate_url | slice: 0, 8 %}
+      {% if url_http_prefix == 'http://' or url_https_prefix == 'https://' %}
+        {% assign url_remainder = candidate_url | remove_first: 'https://' | remove_first: 'http://' %}
+        {% assign url_host = url_remainder | split: '/' | first | split: '?' | first | split: '#' | first %}
+        {% if url_host != blank %}
+          {% assign publication_link = candidate_url %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    <div class="title">
+      {% if publication_link != blank %}
+        <a href="{{ publication_link | escape }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </div>
     <!-- Author -->
     <div class="author">
-      {% assign author_array_size = entry.author_array | size %}
-
-      {% assign author_array_limit = author_array_size %}
-      {% if site.max_author_limit and author_array_size > site.max_author_limit %}
-        {% assign author_array_limit = site.max_author_limit %}
-      {% endif %}
-      {%- for author in entry.author_array limit: author_array_limit -%}
+      {%- for author in entry.author_array -%}
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
@@ -81,7 +105,7 @@
           {% if forloop.first == false -%}
             {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
           {%- endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+          {%- if forloop.last %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
           <em>
@@ -102,41 +126,6 @@
           {% endif %}
         {%- endif -%}
       {% endfor %}
-      {%- assign more_authors = author_array_size | minus: author_array_limit -%}
-
-      {%- assign more_authors_hide = more_authors | append: ' more author' -%}
-      {% if more_authors > 0 %}
-        {%- if more_authors > 1 -%}
-          {% assign more_authors_hide = more_authors_hide | append: 's' %}
-        {%- endif -%}
-        {% assign more_authors_show = '' %}
-        {%- for author in entry.author_array offset: author_array_limit -%}
-          {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last %}
-          {% unless forloop.last %}
-            {% assign more_authors_show = more_authors_show | append: ', ' %}
-          {% endunless %}
-        {%- endfor -%}
-        {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        , and
-        <span
-          class="more-authors"
-          title="click to view {{ more_authors_hide }}"
-          onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
-              var cursorPosition = 0;
-              var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
-                if (++cursorPosition == more_authors_text.length){
-                  clearInterval(textAdder);
-                }
-            }, '{{ site.more_authors_animation_delay }}');
-          "
-        >
-          {{- more_authors_hide -}}
-        </span>
-      {% endif %}
       {% if entry.annotation %}
         <i
           class="fa-solid fa-circle-info ml-1"
